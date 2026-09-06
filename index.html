@@ -5,22 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>ULM RB Opponent Intelligence</title>
 <style>
-:root{--maroon:#6a1b2a;--gold:#d6a84b;--navy:#132338;--ink:#14202d;--muted:#667085;--bg:#f4f6f8;--card:#ffffff;--line:#dde3ea;--good:#1f7a4c;--bad:#ad2d38;--warn:#9b6b15}
+:root{--maroon:#7a1730;--gold:#e6b94a;--navy:#111827;--ink:#f4f7fb;--muted:#9ca9ba;--bg:#080d14;--card:#111925;--card2:#151f2d;--line:#283548;--good:#55d89a;--bad:#ff7380;--warn:#f2bd58}
 *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
-.header{background:linear-gradient(115deg,var(--maroon),#42121c 64%,var(--navy));color:#fff;padding:22px 28px;border-bottom:4px solid var(--gold)}
+.header{background:linear-gradient(115deg,#641126,#250b13 58%,#0c1420);color:#fff;padding:18px 28px;border-bottom:3px solid var(--gold)}
 .header-row{max-width:1500px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:18px}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:1.8px;color:#ead6a8;font-weight:800}.header h1{font-size:27px;margin:4px 0 3px}.header p{margin:0;color:#ebedf0;font-size:13px}.coach{font-weight:800;color:#fff;border:1px solid rgba(255,255,255,.35);padding:8px 12px;border-radius:8px;white-space:nowrap}
-.shell{max-width:1500px;margin:18px auto;padding:0 18px 40px}.toolbar{display:grid;grid-template-columns:1.35fr .72fr .72fr .62fr .65fr auto;gap:10px;background:#fff;border:1px solid var(--line);padding:14px;border-radius:12px;box-shadow:0 3px 12px rgba(16,24,40,.05)}
-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);display:block;margin-bottom:5px}select,input[type=file],button{width:100%;height:39px;border:1px solid #cfd6df;border-radius:8px;background:#fff;padding:0 10px;color:var(--ink)}input[type=file]{padding:8px;font-size:12px}button{width:auto;background:var(--maroon);color:#fff;border:0;font-weight:800;padding:0 18px;cursor:pointer}button.secondary{background:var(--navy)}button:disabled{opacity:.45;cursor:not-allowed}
-.status{margin:10px 2px 0;color:var(--muted);font-size:12px}.tabs{display:flex;gap:7px;flex-wrap:wrap;margin:16px 0 12px}.tab{border:1px solid var(--line);background:#fff;color:var(--ink);height:36px}.tab.active{background:var(--navy);color:#fff;border-color:var(--navy)}
-.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px;box-shadow:0 2px 9px rgba(16,24,40,.04);overflow:auto}.span12{grid-column:span 12}.span8{grid-column:span 8}.span6{grid-column:span 6}.span4{grid-column:span 4}.span3{grid-column:span 3}.card h2{font-size:16px;margin:0 0 3px}.sub{font-size:12px;color:var(--muted);margin-bottom:12px}.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:9px}.kpi{border:1px solid var(--line);border-radius:10px;padding:11px;background:#fbfcfd}.kpi .v{font-size:23px;font-weight:900}.kpi .l{font-size:10px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.45px;margin-top:3px}.kpi .s{font-size:10px;color:var(--muted);margin-top:4px}
-table{width:100%;border-collapse:collapse;font-size:12px}th,td{padding:8px 8px;border-bottom:1px solid #edf0f3;text-align:left;white-space:nowrap}th{font-size:10px;text-transform:uppercase;letter-spacing:.45px;color:var(--muted);background:#fafbfc;position:sticky;top:0}td.num,th.num{text-align:right}.pill{display:inline-block;border-radius:999px;padding:3px 7px;font-size:10px;font-weight:800;background:#eef2f6}.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}.empty{padding:46px 18px;text-align:center;color:var(--muted)}.note{font-size:11px;color:var(--muted);line-height:1.45;margin-top:10px}.bar{height:8px;background:#edf0f3;border-radius:999px;overflow:hidden;min-width:85px}.bar>i{display:block;height:100%;background:var(--maroon)}.section{display:none}.section.active{display:block}.mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.file-name{font-size:11px;color:var(--muted);margin-top:4px}
+.brand-side{display:flex;align-items:center;gap:14px}.roundel{width:72px;height:72px;border-radius:50%;border:3px solid var(--gold);background:#fff;color:var(--maroon);display:grid;place-items:center;position:relative;box-shadow:0 0 0 4px var(--maroon),0 0 0 6px rgba(230,185,74,.75);flex:none}.roundel:before{content:'WARHAWKS';position:absolute;top:8px;font-size:7px;font-weight:950;letter-spacing:1.1px}.roundel:after{content:'FOOTBALL';position:absolute;bottom:8px;font-size:6px;font-weight:950;letter-spacing:1px}.roundel b{font-size:23px;font-weight:1000;letter-spacing:-2px}
+.shell{max-width:1500px;margin:18px auto;padding:0 18px 40px}.toolbar{display:grid;grid-template-columns:1.15fr 1.05fr .72fr .72fr .62fr .65fr auto;gap:10px;background:var(--card);border:1px solid var(--line);padding:14px;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);display:block;margin-bottom:5px}select,input[type=file],button{width:100%;height:39px;border:1px solid var(--line);border-radius:8px;background:var(--card2);padding:0 10px;color:var(--ink)}option{background:var(--card)}input[type=file]{padding:8px;font-size:12px}button{width:auto;background:var(--maroon);color:#fff;border:0;font-weight:800;padding:0 18px;cursor:pointer}button.secondary{background:#263449}button:disabled{opacity:.45;cursor:not-allowed}
+.opponent-toggle{display:flex;gap:5px;padding:4px;border:1px solid var(--line);border-radius:10px;background:#090f18}.opponent-btn{height:31px;flex:1;padding:0 12px;background:transparent;color:var(--muted);border:1px solid transparent}.opponent-btn.active{background:var(--maroon);color:#fff;border-color:#a33a52;box-shadow:0 3px 10px rgba(0,0,0,.28)}
+.status{margin:10px 2px 0;color:var(--muted);font-size:12px}.tabs{display:flex;gap:7px;flex-wrap:wrap;margin:16px 0 12px}.tab{border:1px solid var(--line);background:var(--card);color:var(--ink);height:36px}.tab.active{background:var(--maroon);color:#fff;border-color:#a33a52}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px;box-shadow:0 8px 22px rgba(0,0,0,.18);overflow:auto}.span12{grid-column:span 12}.span8{grid-column:span 8}.span6{grid-column:span 6}.span4{grid-column:span 4}.span3{grid-column:span 3}.card h2{font-size:16px;margin:0 0 3px}.sub{font-size:12px;color:var(--muted);margin-bottom:12px}.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:9px}.kpi{border:1px solid var(--line);border-radius:10px;padding:11px;background:var(--card2)}.kpi .v{font-size:23px;font-weight:900}.kpi .l{font-size:10px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:.45px;margin-top:3px}.kpi .s{font-size:10px;color:var(--muted);margin-top:4px}
+table{width:100%;border-collapse:collapse;font-size:12px}th,td{padding:8px 8px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}th{font-size:10px;text-transform:uppercase;letter-spacing:.45px;color:#b6c0ce;background:#0e1622;position:sticky;top:0}td.num,th.num{text-align:right}.pill{display:inline-block;border-radius:999px;padding:3px 7px;font-size:10px;font-weight:800;background:#263449}.good{color:var(--good)}.bad{color:var(--bad)}.warn{color:var(--warn)}.empty{padding:46px 18px;text-align:center;color:var(--muted)}.note{font-size:11px;color:var(--muted);line-height:1.45;margin-top:10px}.bar{height:8px;background:#263449;border-radius:999px;overflow:hidden;min-width:85px}.bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--maroon),var(--gold))}.section{display:none}.section.active{display:block}.mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.file-name{font-size:11px;color:var(--muted);margin-top:4px}
+@media print{body{background:#fff;color:#111}.header{-webkit-print-color-adjust:exact;print-color-adjust:exact}.toolbar,.tabs{display:none}.card,.kpi{background:#fff;color:#111;box-shadow:none}.sub,.note,.kpi .l,.kpi .s{color:#555}th{background:#eee;color:#222}}
 @media(max-width:1050px){.toolbar{grid-template-columns:1fr 1fr}.kpis{grid-template-columns:repeat(3,1fr)}.span8,.span6,.span4,.span3{grid-column:span 12}}@media(max-width:650px){.toolbar{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}.header-row{align-items:flex-start;flex-direction:column}}
 </style>
 </head>
 <body>
-<header class="header"><div class="header-row"><div><div class="eyebrow">ULM Football • Running Back Intelligence</div><h1>RB Opponent Analysis Engine</h1><p>Weekly opponent scouting • automatically loads the current published opponent data</p></div><div class="coach">Built for Shawn Simmons</div></div></header>
+<header class="header"><div class="header-row"><div><div class="eyebrow">ULM Football • Running Back Intelligence</div><h1>RB Opponent Analysis Engine</h1><p>Weekly opponent scouting • opponent data stays separated by matchup</p></div><div class="brand-side"><div class="coach">Built for Shawn Simmons</div><div class="roundel" aria-label="ULM Warhawks roundel"><b>ULM</b></div></div></div></header>
 <main class="shell">
 <div class="toolbar">
+ <div><label>Opponent</label><div class="opponent-toggle"><button class="opponent-btn active" data-opponent="MSSTATE">Mississippi State</button><button class="opponent-btn" data-opponent="UAB">UAB</button></div></div>
  <div><label>Weekly Data</label><div style="display:flex;gap:8px;align-items:center"><button id="reload" class="secondary">Reload Latest</button></div><div class="file-name" id="fileName">Connecting to current opponent…</div></div>
  <div><label>Opponent Offense</label><select id="offteam" disabled><option>Loading…</option></select></div>
  <div><label>Opponent Defense</label><select id="team" disabled><option>Loading…</option></select></div>
@@ -63,32 +67,39 @@ function populate(){
  const teams=unique(DATA.map(r=>r.pff_DEFTEAM)).sort();$('team').innerHTML='<option value="ALL">All Defenses</option>'+teams.map(x=>`<option>${esc(x)}</option>`).join('');$('team').disabled=!teams.length;
  const seasons=unique(DATA.map(r=>r.pff_GAMESEASON)).sort((a,b)=>b-a);$('season').innerHTML='<option value="ALL">All</option>'+seasons.map(x=>`<option>${esc(x)}</option>`).join('');$('season').disabled=false;$('personnel').disabled=false;$('analyze').disabled=false;$('export').disabled=false;
 }
-const DATA_URL='https://hzrosmevuejjlxigdxmg.supabase.co/storage/v1/object/public/rb-scout/current.csv';
+const OPPONENTS={
+ MSSTATE:{label:'Mississippi State',url:'https://hzrosmevuejjlxigdxmg.supabase.co/storage/v1/object/public/rb-scout/MSSTATE.csv'},
+ UAB:{label:'UAB',url:'data/UAB.csv'}
+};
+let currentOpponent='MSSTATE';
 async function loadCurrent(){
-  $('status').textContent='Loading the latest published opponent data…';
+  const opponent=OPPONENTS[currentOpponent];
+  $('status').textContent=`Loading ${opponent.label} opponent data…`;
   $('reload').disabled=true;
   try{
-    const res=await fetch(DATA_URL+'?t='+Date.now(),{cache:'no-store'});
+    const join=opponent.url.includes('?')?'&':'?';
+    const res=await fetch(opponent.url+join+'t='+Date.now(),{cache:'no-store'});
     if(!res.ok)throw new Error(`HTTP ${res.status}`);
     const text=await res.text();
     DATA=parseCSV(text);
-    if(!DATA.length)throw new Error('No plays found in current.csv');
+    if(!DATA.length)throw new Error(`No plays found for ${opponent.label}`);
     populate();
     const defs=unique(DATA.map(r=>r.pff_DEFTEAM));
     if(defs.length===1){$('team').value=defs[0]}
     const seasons=unique(DATA.map(r=>r.pff_GAMESEASON));
     if(seasons.length===1){$('season').value=seasons[0]}
-    $('fileName').textContent=`current.csv • ${DATA.length.toLocaleString()} plays`;
+    $('fileName').textContent=`${opponent.label} • ${DATA.length.toLocaleString()} plays`;
     const label=defs.length===1?` • Current defense: ${defs[0]}`:'';
-    $('status').textContent=`Latest opponent data loaded: ${DATA.length.toLocaleString()} plays${label}. Use the filters below to scout 20/21 personnel.`;
+    $('status').textContent=`${opponent.label} loaded: ${DATA.length.toLocaleString()} plays${label}. Use the filters below to scout 20/21 personnel.`;
     analyze();
   }catch(err){
     console.error(err);
-    $('fileName').textContent='Unable to load current.csv';
-    $('status').innerHTML='Could not load the weekly opponent file. Ask Tommy to confirm that <b>current.csv</b> is published in the RB Scout storage bucket, then press Reload Latest.';
+    $('fileName').textContent=`Unable to load ${opponent.label}`;
+    $('status').textContent=`Could not load ${opponent.label} data. Confirm the app was deployed with its data folder, then press Reload Latest.`;
   }finally{$('reload').disabled=false;}
 }
 $('reload').onclick=loadCurrent;
+document.querySelectorAll('.opponent-btn').forEach(b=>b.onclick=()=>{if(b.dataset.opponent===currentOpponent)return;currentOpponent=b.dataset.opponent;document.querySelectorAll('.opponent-btn').forEach(x=>x.classList.toggle('active',x===b));DATA=[];$('offteam').disabled=true;$('team').disabled=true;$('season').disabled=true;$('personnel').disabled=true;$('analyze').disabled=true;$('export').disabled=true;loadCurrent()});
 $('analyze').onclick=analyze;$('export').onclick=()=>window.print();$('offteam').onchange=analyze;$('team').onchange=analyze;$('season').onchange=analyze;$('personnel').onchange=analyze;
 window.addEventListener('DOMContentLoaded',loadCurrent);
 document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===b.dataset.tab))});
