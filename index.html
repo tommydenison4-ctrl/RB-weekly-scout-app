@@ -288,5 +288,8 @@ $('drawerOverlay').onclick=closePlayerIntel;
 
 function analyze(){if(!DATA.length)return;const rows=baseRows();renderOverview(rows);renderReceiving(rows);renderProtection(rows);renderTackles(rows);renderStructures(rows);const off=$('offteam').value==='ALL'?'all offenses':$('offteam').value;const def=currentOpponentTeamCode();$('status').textContent=`${WORKSPACES[ACTIVE_WORKSPACE].label} • ${rows.length.toLocaleString()} plays • ${off} vs ${teamDisplay(def)}${$('season').value==='ALL'?'':` • ${$('season').value}`}.`}
 </script>
+
+<script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
